@@ -1,3 +1,15 @@
+## About
+This documentation contains steps and scripts to be used for the installation of a galaxy webserver instance using the following specifications:
+
+Ubuntu 18.04.1 LTS (GNU/Linux 4.15.0-33-generic x86_64)
+2 CPUs, 30 Cores, 384 GB RAM, 4TB storage
+Linux user to run servers (galaxy, ftp, http), and submit jobs
+galaxy home
+Module environment for software path management
+slurm
+python 2.7.9
+PostgreSQL server with user and database for galaxy
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/ecotoxxplorer/galaxyserver.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
@@ -7,6 +19,10 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 ### Markdown
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+
+```markdown
+$ 
+```markdown
 
 ```markdown
 Syntax highlighted code block
