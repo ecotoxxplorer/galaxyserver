@@ -1,3 +1,4 @@
+# Installation Guide for a Scalable Galaxy Server on a Workstation with Ubuntu 18.04
 ## About
 This documentation contains steps and scripts to be used for the installation of a galaxy webserver instance using the following specifications:
 
