@@ -7,53 +7,34 @@ This documentation contains steps and scripts to be used for the installation of
 - galaxy home
 - Module environment for software path management
   - slurm
-  - python 2.7.9
+  - python 2.7.15rc1
 - PostgreSQL server with user and database for galaxy
+
+## Preparation
+Requirements are `git`, `slurm`/`munge`, `sudo` and `sshd`.
+
+Create a "galaxy" user that does not belong to the group of sudoers and will hold ownership
+over galaxy server files.
+
+```
+$ sudo adduser galaxy
+$ sudo su galaxy # to become the galaxy user
+```
+
+Run the installation commands from home folder of "galaxy" user.
+
+```
+$ cd
+```
 
 ## Installation
 
-Requirements are `git`, `slurm`/`munge`, `sudo` and `sshd`.
-Run the installation commands from your home folder.
+Clone the repository from github. Please visit [here](https://galaxyproject.org/admin/get-galaxy/), for an updated version.
 
 ```
-cd
+git clone -b release_18.05 https://github.com/galaxyproject/galaxy.git
 ```
 
-#### Shell environment
-
-Adjust `~/.bashrc` to load slurm and python `$PATH`, `$LD_LIBRARY_PATH`,
-`$PYTHONHOME`, `$PYTHONUSERBASE` and `$PYTHONPATH`.
-
-```
-cat >> .bashrc << HERE
-# galaxy-admin
-source /usr/share/Modules/init/bash
-source /software/Modules/modules.rc
-module purge
-module load slurm
-module load slurm_scripts
-module load galaxy-python/2.7.9
-HERE
-source .bashrc
-```
-
-Some python dependencies:
-
-```
-wget https://bootstrap.pypa.io/get-pip.py
-python get-pip.py --no-wheel
-export PATH=$HOME/.local/bin:$PATH
-pip install --user deeptools
-```
-
-#### galaxy-admin
-
-Clone the repository from github, and create credentials file.
-
-```
-git clone https://github.com/mpg-age-bioinformatics/galaxy-admin
-cp galaxy-admin/credentials.example galaxy-admin/credentials
-```
 
 Modify the file `credentials` and source it to export variables.
 
