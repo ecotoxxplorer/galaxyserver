@@ -32,9 +32,10 @@ $ cd
 Clone the repository from github. Please visit [here](https://galaxyproject.org/admin/get-galaxy/), for an updated version.
 
 ```
-git clone -b release_18.05 https://github.com/galaxyproject/galaxy.git
+$git clone -b release_18.05 https://github.com/galaxyproject/galaxy.git
 ```
 
+--------------------------------------------------------------
 
 Modify the file `credentials` and source it to export variables.
 
