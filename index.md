@@ -75,7 +75,12 @@ So, after copying the slurm.conf file or creating it in /etc/slurm-llnl, we can 
 ```
 $ sudo /etc/init.d/slurmctld start
 $ sudo /etc/init.d/slurmd start
+$ sinfo # If SLURM runs successfully, sinfo should give you a non-error, and display the column headers for SLURM jobs
 ```
 
 #### Section 2 - Get Slurm ready for Galaxy
+```
+$ sudo apt-get install slurm-drmaa1 # For Ubuntu 18.04, if the repository is not yet added, you can sudo add-apt-repository "deb http://ca.archive.ubuntu.com/ubuntu/ xenial universe", sudo add-apt-repository "deb http://ca.archive.ubuntu.com/ubuntu/ xenial-updates main restricted", etc, of Ubuntu 16.04. Then, install slurm-drmaa1
+```
 
+##### Configure galaxy.conf
