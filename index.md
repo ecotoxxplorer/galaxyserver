@@ -9,6 +9,7 @@ This documentation contains steps and scripts to be used for the installation of
   - slurm
   - python 2.7.15rc1
 - PostgreSQL server with user and database for galaxy
+
 For installation, requirements are `git`, `slurm`/`munge`, `sudo` and `sshd`.
 
 ## Preparation
@@ -44,14 +45,37 @@ $ exit # to exit from the galaxy user to a sudo user
 ```
 
 ### Installing slurm Scheduler
-An excellent and detailed documentation for this step can be found [here](http://galaxyproject.github.io/training-material/topics/admin/tutorials/connect-to-compute-cluster/tutorial.html). Therefore, the steps needed will be listed here but without a full explanation.
+An excellent and detailed documentation for this step can be found [here](http://galaxyproject.github.io/training-material/topics/admin/tutorials/connect-to-compute-cluster/tutorial.html). Therefore, the steps needed will be listed here but without a full explanation. Galaxy server comes with a limited job scheduler that struggles to scale with workflow implementations. Thus, we will install a very scalable scheduler and configure Galaxy server to work with it.
 
 #### Section 1 - Install and configure Slurm
 ```
 $ sudo apt-get install -y slurm-wlm
 ```
 
-Before starting slurm scheduler, we will need to create a slurm.conf configuration file. You can use this [site](https://slurm.schedmd.com/configurator.easy.html) to create the file. Or, you can use [this file](slurm.conf) and upload it to /etc/slurm-llnl on the workstation.
+Create the user slurm on the system:
+```
+$ sudo deluser slurm # please note that this step might not be necessary. However, when experienced some debugging issue, I had to make sure that a slurm home directory exist. If one does not exist, just delete the slurm user and create it again.
+$ sudo adduser slurm
+$ sudo chown slurm:slurm /var/lib/slurm-llnl/slurmctld
+$ sudo chown slurm:slurm /var/log/slurm-llnl
+```
+One probably, can add the user "slurm" and then, install slurm-wlm which will help in avoiding to run chown commands in this case.
+
+Under Ubuntu, Slurm configs are stored in /etc/slurm-llnl. No config is created by default.
+Before starting slurm scheduler, we will need to create a slurm.conf configuration file. You can use this [site](https://slurm.schedmd.com/configurator.easy.html) to create the file or by opening /usr/share/doc/slurmctld/slurm-wlm-configurator.html. Here, we will use [this file](slurm.conf) and upload it to /etc/slurm-llnl on the workstation. Several variables are necessary to be defined to have slurm scheduler working. 
+
+For example, the following options including others helped in successfully enabling slurm to run several jobs in one workstation.
+
+- SelectType=select/cons_res
+- SelectTypeParameters=CR_Core
+
+Remember, slurm is originally meant for a cluster computing environment but here, we are setting it up for a single workstation.
+
+So, after copying the slurm.conf file or creating it in /etc/slurm-llnl, we can run the following commands to run and test slurm:
+```
+$ sudo /etc/init.d/slurmctld start
+$ sudo /etc/init.d/slurmd start
+```
 
 #### Section 2 - Get Slurm ready for Galaxy
 
