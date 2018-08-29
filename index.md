@@ -51,7 +51,7 @@ An excellent and detailed documentation for this step can be found [here](http:/
 $ sudo apt-get install -y slurm-wlm
 ```
 
-Before starting slurm scheduler, we will need to create a slurm.conf configuration file. You can use this [site](https://slurm.schedmd.com/configurator.easy.html) to create the file. Or, you can use this file and upload it to /etc/slurm-llnl on the workstation.
+Before starting slurm scheduler, we will need to create a slurm.conf configuration file. You can use this [site](https://slurm.schedmd.com/configurator.easy.html) to create the file. Or, you can use [this file](slurm.conf) and upload it to /etc/slurm-llnl on the workstation.
 
 #### Section 2 - Get Slurm ready for Galaxy
 
