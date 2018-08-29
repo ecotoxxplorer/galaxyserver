@@ -62,7 +62,7 @@ $ sudo chown slurm:slurm /var/log/slurm-llnl
 One probably, can add the user "slurm" and then, install slurm-wlm which will help in avoiding to run chown commands in this case.
 
 Under Ubuntu, Slurm configs are stored in /etc/slurm-llnl. No config is created by default.
-Before starting slurm scheduler, we will need to create a slurm.conf configuration file. You can use this [site](https://slurm.schedmd.com/configurator.easy.html) to create the file or by opening /usr/share/doc/slurmctld/slurm-wlm-configurator.html. Here, we will use [this file](slurm.conf) and upload it to /etc/slurm-llnl on the workstation. Several variables are necessary to be defined to have slurm scheduler working. 
+Before starting slurm scheduler, we will need to create a slurm.conf configuration file. You can use this [site](https://slurm.schedmd.com/configurator.easy.html) to create the file or by opening /usr/share/doc/slurmctld/slurm-wlm-configurator.html. Here, we will use [this file](slurm.conf) and upload it to /etc/slurm-llnl on the workstation. Several variables are necessary to be defined to have slurm scheduler working. If you are going to user our uploaded file, PLEASE replace $(localhost) everywhere in the file by its actual system value. Also, replace $(nproc). Otherwise, slurm may fail to start properly.
 
 For example, the following options including others helped in successfully enabling slurm to run several jobs in one workstation.
 
@@ -71,7 +71,7 @@ For example, the following options including others helped in successfully enabl
 
 Remember, slurm is originally meant for a cluster computing environment but here, we are setting it up for a single workstation.
 
-So, after copying the slurm.conf file or creating it in /etc/slurm-llnl, we can run the following commands to run and test slurm:
+So, after copying the slurm.conf file or creating it in /etc/slurm-llnl, we can run the following commands to bring slurm up:
 ```
 $ sudo /etc/init.d/slurmctld start
 $ sudo /etc/init.d/slurmd start
