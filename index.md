@@ -9,10 +9,9 @@ This documentation contains steps and scripts to be used for the installation of
   - slurm
   - python 2.7.15rc1
 - PostgreSQL server with user and database for galaxy
+For installation, requirements are `git`, `slurm`/`munge`, `sudo` and `sshd`.
 
 ## Preparation
-Requirements are `git`, `slurm`/`munge`, `sudo` and `sshd`.
-
 Create a "galaxy" user that does not belong to the group of sudoers and will hold ownership
 over galaxy server files.
 
