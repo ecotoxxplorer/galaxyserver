@@ -33,7 +33,7 @@ $ cd
 Clone the repository from github. Please visit [here](https://galaxyproject.org/admin/get-galaxy/), for an updated version.
 
 ```
-$git clone -b release_18.05 https://github.com/galaxyproject/galaxy.git
+$ git clone -b release_18.05 https://github.com/galaxyproject/galaxy.git
 ```
 
 --------------------------------------------------------------
@@ -86,3 +86,17 @@ $ sudo apt-get install slurm-drmaa1 # For Ubuntu 18.04, if the repository is not
 
 ##### Configure galaxy.conf
 ...
+
+
+### Installing PostgreSQL database
+
+## Installing Docker
+The steps for installing Docker on Ubuntu is fully documented [here](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04).
+```
+$ sudo apt-get update
+$ sudo apt install apt-transport-https ca-certificates curl software-properties-common
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - # Then add the GPG key for the official Docker repository to your system
+$ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+$ sudo apt update
+$ sudo apt install docker-ce
+```
