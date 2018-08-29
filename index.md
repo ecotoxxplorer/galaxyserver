@@ -39,5 +39,19 @@ $git clone -b release_18.05 https://github.com/galaxyproject/galaxy.git
 
 Now, before we continue, let's go back to our sudo user and finish some more preparation. Basically, we want to configure the job scheduler and database for history and tasks tracking. We will configure slurm job schedule and PostgreSQL database for our local instance of Galaxy server.
 
+```
+$ exit # to exit from the galaxy user to a sudo user
+```
+
 ### Installing slurm Scheduler
+An excellent and detailed documentation for this step can be found [here](http://galaxyproject.github.io/training-material/topics/admin/tutorials/connect-to-compute-cluster/tutorial.html). Therefore, the steps needed will be listed here but without a full explanation.
+
+#### Section 1 - Install and configure Slurm
+```
+$ sudo apt-get install -y slurm-wlm
+```
+
+Before starting slurm scheduler, we will need to create a slurm.conf configuration file. You can use this [site](https://slurm.schedmd.com/configurator.easy.html) to create the file. Or, you can use this file and upload it to /etc/slurm-llnl on the workstation.
+
+#### Section 2 - Get Slurm ready for Galaxy
 
