@@ -84,3 +84,4 @@ $ sudo apt-get install slurm-drmaa1 # For Ubuntu 18.04, if the repository is not
 ```
 
 ##### Configure galaxy.conf
+...
