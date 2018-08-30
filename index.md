@@ -90,7 +90,7 @@ $ sudo apt-get install slurm-drmaa1 # For Ubuntu 18.04, if the repository is not
 
 ### Installing PostgreSQL database
 
-## Installing Docker
+## Installing Docker and building PostgreSQL image
 The steps for installing Docker on Ubuntu is fully documented [here](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04).
 ```
 $ sudo apt-get update
@@ -99,4 +99,8 @@ $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - #
 $ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
 $ sudo apt update
 $ sudo apt install docker-ce
+```
+After installing Docker, you can use [this Dockerfile](Dockerfile) to build a fully configured image with PostgreSQL. The image is setup to work with the Galaxy server.
+```
+$ docker build -t eg_postgresql . # From the same path with the Dockerfile
 ```
