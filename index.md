@@ -102,5 +102,7 @@ $ sudo apt install docker-ce
 ```
 After installing Docker, you can use [this Dockerfile](Dockerfile) to build a fully configured image with PostgreSQL. The image is setup to work with the Galaxy server.
 ```
-$ docker build -t eg_postgresql . # From the same path with the Dockerfile
+$ sudo docker build -t postgresondocker:9.3 . # build image
+$ sudo docker volume create pgdataB # for Data persistence
+$ sudo docker run --name pg_test -v pgdataB:/var/lib/postgresql/9.3/main -p 5632:5432 -d postgresondocker:9.3
 ```
