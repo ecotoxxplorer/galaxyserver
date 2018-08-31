@@ -106,6 +106,11 @@ $ sudo docker build -t postgresondocker:9.3 . # build image
 $ sudo docker volume create datavol_inst1 # for Data persistence
 $ sudo docker run --name psql_inst1 -v datavol_inst1:/var/lib/postgresql/9.3/main -p 5632:5432 -d postgresondocker:9.3 # 5632:5432 refers to port forwarding from host machine port 5632 to container port 5432. 5432 is the default PostgreSQL port but we use 5632 on any other value on the host just in case PostgreSQL is running over the hosting server.
 ```
+Before, we link to the container, we just need to install a PostgreSQL client on the host machine:
+```
+$ sudo apt install postgresql-client-common
+$ sudo apt install postgresql-client-*
+```
 Now to run the PostgreSQL configured on the container image from the host machine, you can use the following command:
 ```
 $ psql -h localhost -p 5632 -d galaxy -U galaxy --password # 5632 is the forwarding host machine port initiated by the previous command
