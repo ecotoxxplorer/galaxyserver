@@ -83,7 +83,7 @@ $ sinfo # If SLURM runs successfully, sinfo should give you a non-error, and dis
 ```
 $ sudo apt-get install slurm-drmaa1 # For Ubuntu 18.04, if the repository is not yet added, you can sudo add-apt-repository "deb http://ca.archive.ubuntu.com/ubuntu/ xenial universe", sudo add-apt-repository "deb http://ca.archive.ubuntu.com/ubuntu/ xenial-updates main restricted", etc, of Ubuntu 16.04. Then, install slurm-drmaa1
 ```
-=================================================================================
+--------------------------------------------------------------
 
 ### Installing Docker and building PostgreSQL image
 The steps for installing Docker on Ubuntu is fully documented [here](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04).
@@ -110,4 +110,6 @@ Now to run the PostgreSQL configured on the container image from the host machin
 ```
 $ psql -h localhost -p 5632 -d galaxy -U galaxy --password # 5632 is the forwarding host machine port initiated by the previous command. This to be added to cron later.
 ```
+--------------------------------------------------------------
+## Configuration of Galaxy Server Files
 ### Configure galaxy.conf
