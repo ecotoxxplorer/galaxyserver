@@ -11,7 +11,7 @@ This documentation contains steps and scripts to be used for the installation of
   - python 2.7.15rc1
 - PostgreSQL server with user and database for galaxy
 
-For installation, requirements are `git`, `slurm`/`munge`, `sudo` and `sshd`.
+For installation, requirements are `git`, `slurm`/`munge`, `sudo` and `sshd`. In the documentation, if you see the "#" sign besides any of the commands, a brief comment is to follow. So, you may ignore it if you understand the command.
 
 ## Preparation
 Create a "galaxy" user that does not belong to the group of sudoers and will hold ownership
