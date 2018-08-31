@@ -11,7 +11,7 @@ This documentation contains steps and scripts to be used for the installation of
   - python 2.7.15rc1
 - PostgreSQL server with user and database for galaxy
 
-For installation, requirements are `git`, `slurm`/`munge`, `sudo` and `sshd`. In the documentation, if you see the "#" sign besides any of the commands, a brief comment is to follow. So, you may ignore it if you understand the command.
+For installation, requirements are `git`, `slurm`/`munge`, `sudo` and `sshd`. In the documentation, if you see the "#" sign besides any of the commands, a brief comment is to follow. So, you may ignore it if you understand the command. In this tutorial, please note that **cotainer** refers to the image we create. It can be thought of as a separate process entity with its own space. For simplicity, just imagine it as another machine. Now, the **host** refers to the server we are accessing for administrating the different steps. Both, the **host** and **container** should synchronize at the end and communicate. The reason to make this distinction here is to tell the user that sometimes we run the command from within the **container** and sometimes from the **host**.
 
 ## Preparation
 Create a "galaxy" user that does not belong to the group of sudoers and will hold ownership
