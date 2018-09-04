@@ -139,3 +139,9 @@ For plugins define number of workers and setup destinations for SLURM as follows
     </destinations>
 </job_conf>
 ```
+--------------------------------------------------------------
+## Running Galaxy Server
+As user "galaxy", run the following command:
+```
+$ ./run.sh # e.g. /srv/galaxy/run.sh
+```
