@@ -97,7 +97,7 @@ $ sudo apt install docker-ce
 ```
 After installing Docker, you can use [this Dockerfile](Dockerfile) to build a fully configured image with PostgreSQL. The image is setup to work with the Galaxy server.
 ```
-$ sudo docker build -t postgresondocker:9.3 . # build image
+$ sudo docker build -t postgresondocker:9.3 . # Build container from the Dockerfile in the local path. If could not resolve 'archive.ubuntu.com', then, it might be an issue of DNS setup through at the host machine. Visit [here](https://stackoverflow.com/questions/24991136/docker-build-could-not-resolve-archive-ubuntu-com-apt-get-fails-to-install-a) for a resolution hint.
 $ sudo docker volume create datavol_inst1 # for Data persistence
 $ sudo docker run --name psql_inst1 -v datavol_inst1:/var/lib/postgresql/9.3/main -p 5632:5432 -d postgresondocker:9.3 # 5632:5432 refers to port forwarding from host machine port 5632 to container port 5432. 5432 is the default PostgreSQL port but we use 5632 on any other value on the host just in case PostgreSQL is running over the hosting server.
 ```
@@ -116,7 +116,7 @@ $ psql -h localhost -p 5632 -d galaxy -U galaxy --password # 5632 is the forward
 After download the Galaxy server from git repository, usually, an example galaxy.yml.sample file is provided under galaxy/config. You may just rename the file to galaxy.yml and follow the provided instructions. Please note that you may need to change the user to the "galaxy" user.
 Please configure the following parameters in galaxy.yml (e.g. /srv/galaxy/config/galaxy.yml):
 ```
-database_connection: 'postgresql://galaxy:galaxy@localhost/galaxy?host=/var/run/postgresql'
+database_connection: 'postgresql://galaxy:galaxy@localhost:5632/galaxy?host=/var/run/postgresql'
 admin_users: othman.soufan@mcgill.ca, etc.
 ```
 Modify and change http: 127.0.0.1:8080 to:
@@ -124,4 +124,18 @@ Modify and change http: 127.0.0.1:8080 to:
 You will have also to create [config/local_env.sh](local_env.sh) and configure the following option:
 ```
 environment_setup_file: config/local_env.sh
+```
+### Configure job_conf.xml
+For plugins define number of workers and setup destinations for SLURM as follows:
+```
+<job_conf>
+    <plugins workers="16">
+        <plugin id="local" type="runner" load="galaxy.jobs.runners.local:LocalJobRunner"/>
+        <plugin id="slurm" type="runner" load="galaxy.jobs.runners.slurm:SlurmJobRunner"/>
+    </plugins>
+    <destinations default="slurm">
+        <destination id="slurm" runner="slurm"/>
+        <destination id="local" runner="local"/>
+    </destinations>
+</job_conf>
 ```
