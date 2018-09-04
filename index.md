@@ -105,6 +105,7 @@ Before, we link to the container, we just need to install a PostgreSQL client on
 ```
 $ sudo apt install postgresql-client-common
 $ sudo apt install postgresql-client-*
+$ sudo apt install postgresql # for preparing /var/run/postgresql
 ```
 Now to run the PostgreSQL configured on the container image from the host machine, you can use the following command:
 ```
