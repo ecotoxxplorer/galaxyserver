@@ -112,4 +112,16 @@ $ psql -h localhost -p 5632 -d galaxy -U galaxy --password # 5632 is the forward
 ```
 --------------------------------------------------------------
 ## Configuration of Galaxy Server Files
-### Configure galaxy.conf
+### Configure galaxy.yml
+After download the Galaxy server from git repository, usually, an example galaxy.yml.sample file is provided under galaxy/config. You may just rename the file to galaxy.yml and follow the provided instructions. Please note that you may need to change the user to the "galaxy" user.
+Please configure the following parameters in galaxy.yml (e.g. /srv/galaxy/config/galaxy.yml):
+```
+database_connection: 'postgresql://galaxy:galaxy@localhost/galaxy?host=/var/run/postgresql'
+admin_users: othman.soufan@mcgill.ca, etc.
+```
+Modify and change http: 127.0.0.1:8080 to:
+```http: (host ip address):8080```
+You will have also to create [config/local_env.sh](local_env.sh) and configure the following option:
+```
+environment_setup_file: config/local_env.sh
+```
