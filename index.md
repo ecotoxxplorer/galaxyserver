@@ -140,6 +140,11 @@ For plugins define number of workers and setup destinations for SLURM as follows
     </destinations>
 </job_conf>
 ```
+### Configure galaxy.ini
+Having galaxy.ini enables options for data upload and other configurations.
+```
+allow_library_path_paste = True
+```
 --------------------------------------------------------------
 ## Running Galaxy Server
 As user "galaxy", run the following command:
