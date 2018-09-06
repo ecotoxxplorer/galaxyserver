@@ -119,6 +119,7 @@ Please configure the following parameters in galaxy.yml (e.g. /srv/galaxy/config
 ```
 database_connection: 'postgresql://galaxy:galaxy@localhost:5632/galaxy'
 admin_users: othman.soufan@mcgill.ca, etc.
+allow_path_paste: True
 ```
 Modify and change http: 127.0.0.1:8080 to:
 ```http: (host ip address):8080```
@@ -139,11 +140,6 @@ For plugins define number of workers and setup destinations for SLURM as follows
         <destination id="local" runner="local"/>
     </destinations>
 </job_conf>
-```
-### Configure galaxy.ini
-Having galaxy.ini enables options for data upload and other configurations.
-```
-allow_library_path_paste = True
 ```
 --------------------------------------------------------------
 ## Running Galaxy Server
