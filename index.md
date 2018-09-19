@@ -147,3 +147,23 @@ As user "galaxy", run the following command:
 ```
 $ ./run.sh # e.g. /srv/galaxy/run.sh
 ```
+
+# Galaxy init scripts
+In order to run the Galaxy server on boot, create an /etc/systemd/system/galaxy1.service file with the following properties:
+```
+[Unit]
+Description=Galaxy Server1
+After=network.target
+
+[Service]
+Restart=always
+User=galaxy
+Group=galaxy
+ExecStart=/bin/bash /home/galaxy/galaxy/run.sh
+Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+```
+Then, run the following commands:
+```
+$ sudo systemctl start galaxy1 # start the service
+$ sudo systemctl enable galaxy1 # automatically get it to start on boot
+```
