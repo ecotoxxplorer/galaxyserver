@@ -161,6 +161,9 @@ User=galaxy
 Group=galaxy
 ExecStart=/bin/bash /home/galaxy/galaxy/run.sh
 Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+[Install]
+WantedBy=multi-user.target
 ```
 Then, run the following commands:
 ```
