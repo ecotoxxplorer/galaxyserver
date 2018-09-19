@@ -165,11 +165,12 @@ TimeoutStartSec=0
 Restart=always
 ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
-ExecStart=/usr/bin/docker run --name %n -v datavol_inst1:/var/lib/postgresql/9.3/main -p 5632:5432 -d postgresondocker:9.3
+ExecStart=/usr/bin/docker run --name %n -v datavol_inst1:/var/lib/postgresql/9.3/main -p 5632:5432 postgresondocker:9.3
  
 [Install]
 WantedBy=multi-user.target
 ```
+Please note not to use "-d" flag for the docker run command when managing through systemd. "You *must* run the container in non-daemonized mode. If you run your docker run command in daemonized mode (docker run -d ), systemd will keep on restarting the container concluding that the service crashed. [ref](https://container-solutions.com/running-docker-containers-with-systemd/)"
 
 ## Galaxy init scripts
 In order to run the Galaxy server on boot, create an /etc/systemd/system/galaxy1.service file with the following properties:
@@ -193,5 +194,6 @@ Then, run the following commands:
 ```
 $ sudo systemctl start docker.postgres1.service # start the service
 $ sudo systemctl start galaxy1 # start the service
+$ sudo systemctl enable docker.postgres1.service # automatically get it to start on boot
 $ sudo systemctl enable galaxy1 # automatically get it to start on boot
 ```
