@@ -142,18 +142,37 @@ For plugins define number of workers and setup destinations for SLURM as follows
 </job_conf>
 ```
 --------------------------------------------------------------
-## Running Galaxy Server
+# Running Galaxy Server
 As user "galaxy", run the following command:
 ```
 $ ./run.sh # e.g. /srv/galaxy/run.sh
 ```
 
-# Galaxy init scripts
+## Docker containers init scripts
+```
+[Unit]
+Description=PostgreSQL Container1
+After=docker.service
+Requires=docker.service
+ 
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker stop %n
+ExecStartPre=-/usr/bin/docker rm %n
+ExecStart=/usr/bin/docker run --name psql_inst1 -v datavol_inst1:/var/lib/postgresql/9.3/main -p 5632:5432 -d postgresondocker:9.3
+ 
+[Install]
+WantedBy=multi-user.target
+```
+
+## Galaxy init scripts
 In order to run the Galaxy server on boot, create an /etc/systemd/system/galaxy1.service file with the following properties:
 ```
 [Unit]
 Description=Galaxy Server1
-After=network.target
+After=network.target docker.redis.service
+Requires=docker.redis.service
 
 [Service]
 Restart=always
