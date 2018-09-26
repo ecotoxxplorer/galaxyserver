@@ -199,4 +199,4 @@ $ sudo systemctl enable galaxy1 # automatically get it to start on boot
 ```
 
 Some useful resources for possible error messages:
-- https://linuxize.com/post/how-to-create-a-sudo-user-on-ubuntu/
+- https://gist.github.com/AtulKsol/4470d377b448e56468baef85af7fd614
