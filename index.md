@@ -197,7 +197,12 @@ $ sudo systemctl start galaxy1 # start the service
 $ sudo systemctl enable docker.postgres1.service # automatically get it to start on boot
 $ sudo systemctl enable galaxy1 # automatically get it to start on boot
 ```
+--------------------------------------------------------------
+# Setting up Galaxy FTP (EXTRA)
+The following configuration is for using SHA1 option for password encryption in Galaxy.
+yum install proftpd proftpd-postgresql
 
 Some useful resources for possible error messages:
 - https://gist.github.com/AtulKsol/4470d377b448e56468baef85af7fd614
 - https://serverfault.com/questions/110154/whats-the-default-superuser-username-password-for-postgres-after-a-new-install
+- http://galacticengineer.blogspot.com/2015/02/ftp-upload-to-galaxy-using-proftpd-and.html
